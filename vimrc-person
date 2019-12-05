@@ -1,0 +1,3 @@
+set nu
+map  I#<ESC>
+map  0x
