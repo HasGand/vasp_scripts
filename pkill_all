@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+
+a=$(who | awk '{print $2}' | awk -F "" '{print $5}')
+for i in $a
+do
+	pkill -kill -t pts/$i
+done
