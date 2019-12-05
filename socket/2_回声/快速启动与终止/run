@@ -1,0 +1,18 @@
+#!/usr/bin/bash
+
+path_=/home/node/rjh/gcc/socket/2_回声
+
+if test -f $path_/2_回声.server/server_回声
+then
+	nohup $path_/2_回声.server/server_回声 &
+	echo $$ >> ID
+else
+	echo "The file name server_回声 is not exised!"
+fi
+
+if test -f $path_/2_回声.client/client_回声
+then
+        $path_/2_回声.client/client_回声
+else
+        echo "The file name client_回声 is not exised!"
+fi

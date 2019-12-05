@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+
+id=$(sed -n '1,$p' ID)	#awk '{printf $1 "\n"}' ID
+
+for i in $id
+do
+	kill `expr $i + 1`
+	echo "The ID: `expr $i + 1` is killed!"
+done
+rm ID nohup.out
