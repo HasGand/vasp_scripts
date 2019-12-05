@@ -1,4 +1,0 @@
-#!/usr/bin/bash
-
-rm $1/head.h.gch
-gcc $1/* -o $2
