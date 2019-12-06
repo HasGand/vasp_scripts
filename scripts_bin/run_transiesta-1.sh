@@ -1,11 +1,12 @@
 #!/bin/bash
 #依次输入 计算核数 结构名称 各电压值
 path="/home/node/software/mpich/mpich/bin"
-echo -e "\n----------------------------------------------------------------------------------------------"
-echo "Welcome to use $0."
-echo -e "You have submitted $((($#-2))) tasks!\nThe parameters you enter are ( $* )."
-echo -e "The task number for this script is $$.\nYou can kill this IV-work.sh through the task number!."
-echo -e "----------------------------------------------------------------------------------------------\n\n"
+echo    ""
+echo -e "|----------------------------------------------------------------------------------------------|"
+echo    "|                                Welcome to use $0.                                            |"
+echo -e "|	    You have submitted $((($#-2))) tasks!\nThe parameters you enter are ( $* ).         |"
+echo -e "|The task number for this script is $$.\nYou can kill this IV-work.sh through the task number!.|"
+echo -e "|----------------------------------------------------------------------------------------------|\n\n"
 
 for i in $*
 do
