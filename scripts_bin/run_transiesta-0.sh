@@ -2,11 +2,11 @@
 #依次输入 计算核数 结构名称 各电压值
 path="/home/node/software/mpich/mpich/bin"
 echo    ""
-echo    "|----------------------------------------------------------------------------------------------|"
-echo    "| 					Welcome to use $0.                                      |"
-echo -e "|	   You have submitted $((($#-2))) tasks!\nThe parameters you enter are ( $* ).          |"
-echo -e "|The task number for this script is $$.\nYou can kill this IV-work.sh through the task number!.|"
-echo -e "|----------------------------------------------------------------------------------------------|\n\n"
+echo    "||===============================================================================================================================||"
+echo    "||Welcome to use $0."
+echo -e "||You have submitted $((($#-2))) tasks!\n||The parameters you enter are ( $* )."
+echo -e "||The task number for this script is $$.\n||You can kill this IV-work.sh through the task number!."
+echo -e "||===============================================================================================================================||\n\n"
 sed -i "1,\$s/##/$2/g" doc/scat.fdf doc/tbtrans.fdf
 cd left
 $path/mpirun -np $1 transiesta < left.fdf > left.out
