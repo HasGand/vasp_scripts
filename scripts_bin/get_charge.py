@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/home/node2/software/python-3.6/build/bin/python3
 ##madebyrjh
 import numpy as np
 import os

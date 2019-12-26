@@ -25,11 +25,13 @@ for i in $(num=$(awk 'NR==25{print $2}' right.fdf); awk -v num="$num" 'NR>=29&&N
 for i in $(sed "s/\r/\n/g" data); do cp doc/$i.psf right;done
 rm data
 #修改left头名 加入计算参数
+hl=$(echo `cat left.fdf | wc -l`)
 sed -i "6,7s/VNL-Export/left/g" left.fdf
-sed -i "$1r _left.fdf_" left.fdf
+sed -i "${hl}r _left.fdf_" left.fdf
 #修改right头名 加入计算参数
+hr=$(echo `cat right.fdf | wc -l`)
 sed -i "6,7s/VNL-Export/right/g" right.fdf
-sed -i "$2r _right.fdf_" right.fdf
+sed -i "${hr}r _right.fdf_" right.fdf
 #left right文件夹ok
 mv left.fdf left
 mv right.fdf right

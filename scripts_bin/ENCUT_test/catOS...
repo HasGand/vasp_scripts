@@ -1,2 +1,0 @@
-commod=`for i in *0;do echo -e "\\\n\\\nENCUT=$i"; cat $i\/OS*; done`
-echo "$commod"

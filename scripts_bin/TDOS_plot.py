@@ -24,7 +24,7 @@ font = {'family' : 'arial',
         }  
 
 axe.set_xlabel(r'${E}$-$E_{f}$ (eV)',fontdict=font)
-axe.set_ylabel(r'PDOS (states/eV)',fontdict=font)
+axe.set_ylabel(r'TDOS (states/eV)',fontdict=font)
 
 plt.yticks(fontsize=10,fontname='arial')
 
