@@ -1,16 +1,16 @@
 #!/usr/bin/sh
-help(){
+_help_(){
 	cat << !
 ||========================================================================||
 ||Usage:	run_time_load.sh [day] [hour] [minute] [load] [commod*]   ||
-||		run_time_load.sh -h,	  For help			  ||
-||		run_time_load.sh --help,  Get detailed help information	  ||
+||		run_time_load.sh -h,	 For help			  ||
+||              run_time_load.sh --help,  Get detailed help information   ||
 ||									  ||
 ||Attention:	All dates require two digits,                             ||
 ||		and load must be 0.3 or more and 1 or less.		  ||
 ||									  ||
 ||Tips:		If you want to run in the background,                     ||
-||		enter the command like this:				  ||
+||		you may enter like this:				  ||
 ||			nohup run_time_load.sh 02 02 02 0.8 echo 123 &	  ||
 ||									  ||
 ||Description:	The script will periodically run user-entered 		  ||
@@ -21,35 +21,57 @@ help(){
 !
 }
 
-if [[ $1 == "--help" ]]
+case $1 in
+	-h)
+		echo "Usage: run_time_load.sh [day] [hour] [minute] [load] [commod*]"
+        	exit 0
+		;;
+	--help)
+		_help_
+        	exit 0
+		;;
+	[0-3][0-9])
+		;;
+	*)
+		echo "Error: Invalid date input --- day!"
+		exit 1
+		;;
+esac
+
+for i in $2 $3
+do
+	case $i in
+		[0-6][0-9])
+			;;
+		*)
+			if [[ $i == $2 ]]; then temp="hour"; else temp="minute"; fi
+			echo "Error: Invalid date input --- $temp!"
+			exit 1
+			;;
+	esac
+done
+
+load=$4
+if [[ `echo "$load <= 1 && $load >=0.3"|bc` -eq 0  ]]
 then
-	help
-	exit 0
-elif [[ $1 == "-h" ]]
-then
-	echo "Usage: run_time_load.sh [day] [hour] [minute] [load] [commod*]"
-	exit 0
-else
-	echo ""
+        echo -e "Error: load must be 0.3 or more and 1 or less!!!"
+        echo -e "       If the load is too high, it may lead to premature submission of tasks.\n"
+        exit 1
 fi
 
 _day_=$1
 _time_h_=$2
 _time_m_=$3
-load=$4
-if [[ `echo "$load <= 1 && $load >=0.3"|bc` -eq 0  ]]
-then
-	echo -e "Error: load must be 0.3 or more and 1 or less!!!"
-	echo -e "	If the load is too high, it may lead to premature submission of tasks.\n"
-	exit 1
-fi
 time_sleep=10
 #_time_s_=$4
 shift 4
 commod=$*
+if [[ ! $commod ]];then
+	echo "Error: command is empty!!!"
+	exit 1
+fi
 
 #echo -e "||I will submit your commod, when the time is $_day_--$_time_h_:$_time_m_:$_time_s_. ||"
-
 printf "%-100s%s\n" "||==================================================================================================" "||"
 printf "%-100s%s\n" "||I will submit your commod, when the time is $_day_-$_time_h_:$_time_m_:xx." "||"
 printf "%-100s%s\n" "||Your commod is :               " "||"
