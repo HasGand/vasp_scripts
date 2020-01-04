@@ -3,7 +3,8 @@ help(){
 	cat << !
 ||========================================================================||
 ||Usage:	run_time_load.sh [day] [hour] [minute] [load] [commod*]   ||
-||		run_time_load.sh -h,	 For help			  ||
+||		run_time_load.sh -h,	  For help			  ||
+||		run_time_load.sh --help,  Get detailed help information	  ||
 ||									  ||
 ||Attention:	All dates require two digits,                             ||
 ||		and load must be 0.3 or more and 1 or less.		  ||
