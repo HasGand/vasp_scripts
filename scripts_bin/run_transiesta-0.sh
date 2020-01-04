@@ -1,12 +1,16 @@
 #!/bin/bash
 #依次输入 计算核数 结构名称 各电压值
-path="/home/node/software/mpich/mpich/bin"
-echo    ""
-echo    "||===============================================================================================================================||"
-echo    "||Welcome to use $0."
-echo -e "||You have submitted $((($#-2))) tasks!\n||The parameters you enter are ( $* )."
-echo -e "||The task number for this script is $$.\n||You can kill this IV-work.sh through the task number!."
-echo -e "||===============================================================================================================================||\n\n"
+path="/home/mechine4/software/mpich/mpich/bin"
+
+echo -e "\n"
+printf "%-100s%s\n" "||==================================================================================================" "||"
+printf "%-100s%s\n" "||You have submitted $((($#-2))) tasks!" "||"
+printf "%-100s%s\n" "||The parameters you enter are:              " "||"
+printf "%-100s%s\n" "||                              $*" "||"
+printf "%-100s%s\n" "||And my pid is $$, my name is $0" "||"
+printf "%-100s%s\n" "||==================================================================================================" "||"
+echo -e "\n"
+
 sed -i "1,\$s/##/$2/g" doc/scat.fdf doc/tbtrans.fdf
 cd left
 $path/mpirun -np $1 transiesta < left.fdf > left.out

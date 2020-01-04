@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/home/mechine4/software/Python-3.6.2/build/bin/python3
 #Get lattice paramters from BM state equation
 
 import math

@@ -1,12 +1,14 @@
 #!/bin/bash
 #依次输入 计算核数 结构名称 各电压值 
-path="/home/node/software/mpich/mpich/bin"
-echo    ""
-echo -e "||===============================================================================================================================||"
-echo    "||Welcome to use $0."
-echo -e "||You have submitted $((($#-2))) tasks!\n||The parameters you enter are ( $* )."
-echo -e "||The task number for this script is $$.\n||You can kill this IV-work.sh through the task number!."
-echo -e "||===============================================================================================================================||\n\n"
+path="/home/mechine4/software/mpich/mpich/bin"
+echo -e "\n"
+printf "%-100s%s\n" "||==================================================================================================" "||"
+printf "%-100s%s\n" "||You have submitted $((($#-2))) tasks!" "||"
+printf "%-100s%s\n" "||The parameters you enter are:              " "||"
+printf "%-100s%s\n" "||                              $*" "||"
+printf "%-100s%s\n" "||And my pid is $$, my name is $0" "||"
+printf "%-100s%s\n" "||==================================================================================================" "||"
+echo -e "\n"
 
 for i in $*
 do
@@ -30,6 +32,7 @@ do
 done
 
 cp $num/$2.TSDE doc
+echo -e "Now, $num -> $i\n$num/$2.TSDE to doc\n"
 
 mkdir $i
 cd $i

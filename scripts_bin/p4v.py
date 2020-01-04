@@ -1,4 +1,4 @@
-#!/home/node2/software/python-3.6/build/bin/python3
+#!/home/mechine4/software/Python-3.6.2/build/bin/python3
 # Copyright (C) 2003 Orest Dubay <orest.dubay@univie.ac.at>
 
 from __future__ import generators
