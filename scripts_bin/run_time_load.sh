@@ -72,16 +72,11 @@ return check_flag=$[ $check_flag + 2 ]
 Start(){
 #echo -e "||I will submit your command, when the time is $_day_--$_time_h_:$_time_m_:$_time_s_. ||"
 printf "%-100s%s\n" "||==================================================================================================" "||"
-printf "%-100s%s\n" "||I will submit your command, when the time is $_day_-$_time_h_:$_time_m_:xx and the load is $load or less." "||"
-printf "%-100s%s\n" "||Your command is :               " "||"
-printf "%-100s%s\n" "||                 $command" "||"
-printf "%-100s%s\n" "||And my pid is $$, my name is $0" "||"
-printf "%-100s%s\n" "||==================================================================================================" "||"
-echo -e "\n"
-}
-Start1(){
-printf "%-100s%s\n" "||==================================================================================================" "||"
-printf "%-100s%s\n" "||I will submit your command, when  the load is $load or less." "||"
+if [[ $1 == "load" ]];then
+	printf "%-100s%s\n" "||I will submit your command, when  the load is $load or less." "||"
+else
+	printf "%-100s%s\n" "||I will submit your command, when the time is $_day_-$_time_h_:$_time_m_:xx and the load is $load or less." "||"
+fi
 printf "%-100s%s\n" "||Your command is :               " "||"
 printf "%-100s%s\n" "||                 $command" "||"
 printf "%-100s%s\n" "||And my pid is $$, my name is $0" "||"
@@ -152,11 +147,11 @@ if [[ $1 == [0-9]* && $2 && $2 != [0-9]* ]];then
 	load=$1
 	shift 1
 	command=$*
-	Start1
+	Start "load"
 	CheckLoad
 else	
 	CheckInput $*
-	Start
+	Start "time_load"
 	CheckTime CheckLoad
 fi
 
